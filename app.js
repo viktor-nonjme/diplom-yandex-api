@@ -14,15 +14,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(helmet());
 
-// eslint-disable-next-line no-unused-vars
-app.use((err, req, res, next) => {
-  const { statusCode = 500, message } = err;
-
-  res.status(statusCode).send({
-    message: statusCode === 500 ? 'На сервере произошла ошибка' : message
-  });
-});
-
 app.use('/api', routes);
 
 const PORT = process.env.PORT || 3000;
@@ -38,4 +29,12 @@ mongoose.connect(dataBaseUrl, {
   useCreateIndex: true,
   useFindAndModify: false,
   useUnifiedTopology: true
+});
+
+app.use((err, req, res, next) => {
+  const { statusCode = 500, message } = err;
+
+  res.status(statusCode).send({
+    message: statusCode === 500 ? 'На сервере произошла ошибка' : message
+  });
 });

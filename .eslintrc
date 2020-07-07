@@ -17,7 +17,7 @@
           "never"
       ],
       "no-unused-vars": [
-          "warn"
+          "off"
       ],
       "no-var": [
           "off"
