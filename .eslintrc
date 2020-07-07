@@ -17,21 +17,12 @@
           "never"
       ],
       "no-unused-vars": [
-          "off"
-      ],
-      "no-var": [
-          "off"
-      ],
-      "one-var": [
-          "off"
+          "warn"
       ],
       "no-console": [
-          "off"
+          "warn"
       ],
       "no-underscore-dangle": [
-          "off"
-      ],
-      "func-names": [
           "off"
       ]
   }
