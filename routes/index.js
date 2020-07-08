@@ -7,8 +7,10 @@ const articles = require('./articles');
 const usersController = require('../controllers/users');
 const { requestLogger, errorLogger } = require('../middlewares/logger');
 const { errorHandler } = require('../middlewares/error-handler');
+const limiter = require('../middlewares/limiter');
 
 router.use(requestLogger);
+router.use(limiter);
 
 router.use('/signup', usersController.createUser);
 router.use('/signin', usersController.login);

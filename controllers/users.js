@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
-const { BadRequestError, NotFoundError } = require('../errors');
+const { BadRequestError, NotFoundError, ConflictError } = require('../errors');
 
 const { NODE_ENV, JWT_SECRET } = process.env;
 
@@ -14,7 +14,7 @@ const login = (req, res, next) => {
 
       res.cookie('jwt', token, {
         maxAge: 3600000 * 24 * 7,
-        httpOnly: true
+        httpOnly: true,
       });
 
       res
@@ -32,14 +32,19 @@ const createUser = (req, res, next) => {
       res.status(201).send({
         _id: user._id,
         email: user.email,
-        name: user.name
+        name: user.name,
       });
     })
-    .catch((err) => next(new BadRequestError(err.message)));
+    .catch((err) => {
+      if (err.message.includes('to be unique')) {
+        next(new ConflictError('Email уже используется'));
+      }
+      next(new BadRequestError('Ошибка при создании пользователя'));
+    });
 };
 
 const getUser = (req, res, next) => {
-  User.findById(req.params.id)
+  User.findById(req.user._id)
     .orFail(() => {
       throw new NotFoundError('Пользователь не найден');
     })
@@ -57,5 +62,5 @@ module.exports = {
   getUser,
   createUser,
   getUsers,
-  login
+  login,
 };

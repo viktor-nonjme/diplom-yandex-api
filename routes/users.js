@@ -11,6 +11,6 @@ router.post('/', celebrate({ body: loginSchema }), usersController.login);
 router.use(auth);
 
 router.get('/', usersController.getUsers);
-router.get('/:id', usersController.getUser);
+router.get('/me', usersController.getUser);
 
 module.exports = router;

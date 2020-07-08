@@ -17,7 +17,7 @@ const createArticle = (req, res, next) => {
     source: escape(req.body.source),
     link: req.body.link,
     image: req.body.image,
-    owner: req.user._id
+    owner: req.user._id,
   })
     .then((article) => {
       res.status(201).send({
@@ -28,10 +28,10 @@ const createArticle = (req, res, next) => {
         date: article.date,
         source: article.source,
         link: article.link,
-        image: article.image
+        image: article.image,
       });
     })
-    .catch((err) => next(new BadRequestError(err.message)));
+    .catch(() => next(new BadRequestError('Ошибка при создании новости')));
 };
 
 const deleteArticle = (req, res, next) => {
@@ -56,5 +56,5 @@ const deleteArticle = (req, res, next) => {
 module.exports = {
   getArticles,
   createArticle,
-  deleteArticle
+  deleteArticle,
 };

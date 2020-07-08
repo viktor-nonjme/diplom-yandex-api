@@ -8,20 +8,6 @@
     "ecmaVersion": 2017
   },
   "rules": {
-      "brace-style": [
-          "error",
-          "stroustrup"
-      ],
-      "comma-dangle": [
-          "error",
-          "never"
-      ],
-      "no-unused-vars": [
-          "warn"
-      ],
-      "no-console": [
-          "warn"
-      ],
       "no-underscore-dangle": [
           "off"
       ]

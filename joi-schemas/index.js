@@ -8,12 +8,12 @@ const { passwordSchema } = require('./password-schema');
 const registrationSchema = Joi.object().keys({
   email: emailSchema,
   password: passwordSchema,
-  name: textSchema
+  name: textSchema,
 });
 
 const loginSchema = Joi.object().keys({
   email: emailSchema,
-  password: passwordSchema
+  password: passwordSchema,
 });
 
 const objectIdSchema = Joi.object().keys({ id: objectId });
@@ -26,12 +26,12 @@ const articleSchema = Joi.object().keys({
   source: textSchema,
   link: linkSchema,
   image: linkSchema,
-  owner: objectId
+  owner: objectId,
 });
 
 module.exports = {
   registrationSchema,
   loginSchema,
   objectIdSchema,
-  articleSchema
+  articleSchema,
 };

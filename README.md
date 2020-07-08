@@ -8,7 +8,7 @@ Postman запросы:
 
 ```GET localhost:3000/api/users``` - список пользователей;
 
-```GET localhost:3000/api/users/${id}``` - пользователь;
+```GET localhost:3000/api/users/me``` - пользователь;
 
 ```POST localhost:3000/api/articles``` - создать новость;
 

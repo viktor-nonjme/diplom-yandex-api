@@ -14,21 +14,21 @@ const User = new mongoose.Schema({
       validator(email) {
         return validator.isEmail(email);
       },
-      message: 'Неправильный формат почты'
-    }
+      message: 'Неправильный формат почты',
+    },
   },
   password: {
     type: String,
     required: [true, 'Введите пароль'],
     minlength: [8, 'Минимальная длинна пароля 8 символов'],
-    select: false
+    select: false,
   },
   name: {
     type: String,
     required: [true, 'Введите ваше имя'],
     minlength: [2, 'Минимальная длинна имени 2 символа'],
-    maxlength: [30, 'Максимальная длинна имени 30 символа']
-  }
+    maxlength: [30, 'Максимальная длинна имени 30 символа'],
+  },
 });
 
 User.statics.findUserByCredentials = function findUserByCredentials(email, password) {
