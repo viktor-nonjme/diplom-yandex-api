@@ -1,4 +1,3 @@
-const router = require('express').Router();
 const rateLimit = require('express-rate-limit');
 
 const limiter = rateLimit({
@@ -6,6 +5,4 @@ const limiter = rateLimit({
   max: 10000,
 });
 
-router.use(limiter);
-
-module.exports = router;
+module.exports = limiter;
