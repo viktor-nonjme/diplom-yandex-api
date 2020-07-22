@@ -4,6 +4,13 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const helmet = require('helmet');
+const cors = require('cors');
+
+const corsOptions = {
+  origin: ['http://localhost:8080', 'https://viktor-nonjme.github.io'],
+  optionsSuccessStatus: 200,
+  credentials: true
+}
 
 const routes = require('./routes');
 const limiter = require('./middlewares/limiter');
@@ -15,6 +22,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(helmet());
 
+app.use(cors(corsOptions));
 app.use('/api', routes);
 app.use(limiter);
 
