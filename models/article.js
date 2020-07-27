@@ -18,9 +18,8 @@ const Article = new mongoose.Schema({
     required: [true, 'Введите текст'],
   },
   date: {
-    type: String,
-    minlength: 2,
-    required: [true, 'Дата статьи обязательна'],
+    type: Date,
+    default: Date.now,
   },
   source: {
     type: String,
