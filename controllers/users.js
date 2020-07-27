@@ -58,9 +58,18 @@ const getUsers = (req, res, next) => {
     .catch(next);
 };
 
+const logout = (req, res, next) => {
+  res.clearCookie('jwt', {
+    httpOnly: true,
+  });
+
+  res.status(200).send({ status: '200', message: 'Вы успешно вышли из системы' });
+};
+
 module.exports = {
   getUser,
   createUser,
   getUsers,
   login,
+  logout,
 };

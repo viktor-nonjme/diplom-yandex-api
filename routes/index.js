@@ -8,13 +8,14 @@ const usersController = require('../controllers/users');
 const { requestLogger, errorLogger } = require('../middlewares/logger');
 const { errorHandler } = require('../middlewares/error-handler');
 const limiter = require('../middlewares/limiter');
+const logout = require('./logout');
 
 router.use(requestLogger);
 router.use(limiter);
 
 router.use('/signup', usersController.createUser);
 router.use('/signin', usersController.login);
-
+router.use('/logout', logout);
 router.use('/users', users);
 router.use('/articles', articles);
 router.use(error);

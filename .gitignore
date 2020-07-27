@@ -18,3 +18,7 @@ node_modules
 .env
 
 .ssh
+
+diplom_rsa
+
+diplom_rsa.pub
