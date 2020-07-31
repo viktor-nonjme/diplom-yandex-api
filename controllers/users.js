@@ -16,7 +16,7 @@ const login = (req, res, next) => {
         maxAge: 3600000 * 24 * 7,
         secure: true,
         httpOnly: true,
-        sameSite: false,
+        sameSite: 'none'
       });
 
       res
